@@ -2,6 +2,7 @@ package com.informat.trellocrud.model;
 
 import com.informat.trellocrud.model.enums.ListName;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,9 +14,16 @@ public class Task {
     @GeneratedValue
     private int id;
 
+    @Column(nullable = false)
     private String trelloId;
+
+    @Column(nullable = false, unique = true)
     private String taskName;
+
+    @Column(nullable = false)
     private ListName listName;
+
+    @Column(nullable = false)
     private Date createdAt;
 
     public int getId() {
