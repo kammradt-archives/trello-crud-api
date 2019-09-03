@@ -19,9 +19,14 @@ public class TaskController {
         return taskServiceDefault.getAllTasks();
     }
 
-    @GetMapping("/task/list/{listName}")
-    List<Task> getTasksByList(@PathVariable(value = "listName") ListName listName) {
+    @GetMapping("/task/list")
+    List<Task> getTasksByList(@RequestParam("listName") ListName listName) {
         return taskServiceDefault.getTasksByList(listName);
+    }
+
+    @GetMapping("/task/search")
+    Task getTaskByTaskName(@RequestParam("taskName") String taskName) {
+        return taskServiceDefault.getTaskByTaskName(taskName);
     }
 
     @GetMapping("task/{id}")

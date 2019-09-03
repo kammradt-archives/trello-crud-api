@@ -26,18 +26,18 @@ public class TaskServiceDefault implements TaskService {
 
     @Override
     public List<Task> getTasksByList(ListName listname) {
-        List<Task> tasks = new ArrayList<>();
-        taskRepository.findAll().forEach(task -> {
-            if (task.getListName().equals(listname))
-                tasks.add(task);
-        });
-        return tasks;
+        return taskRepository.findByListName(listname);
     }
 
     @Override
     public Task getTaskById(int id) {
         Optional<Task> task = taskRepository.findById(id);
         return task.orElse(null);
+    }
+
+    @Override
+    public Task getTaskByTaskName(String taskName) {
+        return taskRepository.findByTaskName(taskName);
     }
 
     @Override

@@ -10,6 +10,8 @@ public interface TaskService {
 
     List<Task> getTasksByList(ListName listname);
 
+    Task getTaskByTaskName(String taskName);
+
     Task getTaskById(int id);
 
     Task saveOrUpdateTask(Task task);
