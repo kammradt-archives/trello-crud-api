@@ -3,9 +3,11 @@ package com.informat.trellocrud.controller;
 import com.informat.trellocrud.model.Task;
 import com.informat.trellocrud.model.enums.ListName;
 import com.informat.trellocrud.service.implementation.TaskServiceDefault;
+import com.informat.trellocrud.service.implementation.TrelloApiDefault;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -13,6 +15,9 @@ public class TaskController {
 
     @Autowired
     TaskServiceDefault taskServiceDefault;
+
+    @Autowired
+    TrelloApiDefault trelloApiDefault;
 
     @GetMapping("/task")
     List<Task> getAllTasks() {
@@ -36,7 +41,8 @@ public class TaskController {
 
     @PostMapping("/task")
     Task saveOrUpdateTask(@RequestBody Task task) {
-        return taskServiceDefault.saveOrUpdateTask(task);
+        Task taskCreated = trelloApiDefault.sendTaskToTrello(task);
+        return taskServiceDefault.saveOrUpdateTask(taskCreated);
     }
 
     @DeleteMapping("/task/{id}")
