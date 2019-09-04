@@ -5,6 +5,8 @@ import com.informat.trellocrud.model.enums.ListName;
 import com.informat.trellocrud.service.implementation.TaskServiceDefault;
 import com.informat.trellocrud.service.implementation.TrelloApiDefault;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -41,6 +43,7 @@ public class TaskController {
 
     @PostMapping("/task")
     Task saveOrUpdateTask(@RequestBody Task task) {
+        //TODO Add verification before sending to TrelloApi
         Task taskCreated = trelloApiDefault.sendTaskToTrello(task);
         return taskServiceDefault.saveOrUpdateTask(taskCreated);
     }

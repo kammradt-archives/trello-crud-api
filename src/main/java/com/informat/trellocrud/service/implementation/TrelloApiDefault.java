@@ -37,7 +37,6 @@ public class TrelloApiDefault implements TrelloApiService {
                 Card card = new Card();
                 card.setName(task.getTaskName());
                 Card createdCard = list.createCard(card);
-                System.out.println(createdCard.getName());
                 createdTask.setTrelloId(createdCard.getId());
                 createdTask.setListName(task.getListName());
                 createdTask.setTaskName(createdCard.getName());
