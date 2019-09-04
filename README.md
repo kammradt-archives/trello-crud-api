@@ -7,5 +7,7 @@ Hi, the API link is [here](https://trello-crud-api.herokuapp.com/task)
 - [ ] Create all tests
 - [ ] Create all specific Exceptions
 - [ ] Improve URLs / Endpoints
+- [ ] Learn about deploy strategies -  CI;CD
+- [ ] Use a better Database ex. PostgreSQL
 - [ ] Create secure 'Environment Variables'
 
